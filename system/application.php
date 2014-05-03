@@ -251,7 +251,7 @@ class Application extends Config{
 	 * @var $params: string - передаваемые параметры для конструктора
 	 *
 	 */
-	private function loadLibrary($class, $directory = 'classes', $prefix = '', $params = '') {
+	private function loadLibrary($class, $directory = 'libraries', $prefix = '', $params = '') {
 		static $classes = array();
 		if (isset($classes[$class])) {
 			return $classes[$class];
@@ -267,7 +267,7 @@ class Application extends Config{
 			}
 		}
 		if ($name === FALSE) {
-			exit('Невозможно найти класс: '.$class.'.php');
+			exit('Невозможно найти библиотеку: '.$class.'.php');
 		}
 		self::isLoaded($class);
 		$classes[$class] = new $name($params);
