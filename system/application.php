@@ -51,8 +51,8 @@ class Application extends Config{
 	public function __construct() {
 		$this->controller = $this->separate($_SERVER['REQUEST_URI']);
 		$this->root       = $_SERVER['DOCUMENT_ROOT'];
-		self::database();
 		self::autoload();
+		self::database();
 		self::setController();
 		self::loadView($this->indexPage);
 	}
@@ -295,7 +295,7 @@ class Application extends Config{
 	 *
 	 */
 	private function autoload() {
-		require_once $this->root.APPPATH.'/config/autoload.php';;
+		require_once $this->root.APPPATH.'/config/autoload.php';
 	}
 }
 ?>
