@@ -251,7 +251,7 @@ class Application extends Config{
 	 * @var $params: string - передаваемые параметры для конструктора
 	 *
 	 */
-	private function loadLibrary($class, $directory = 'classes', $prefix = 'SM_', $params = '') {
+	private function loadLibrary($class, $directory = 'classes', $prefix = '', $params = '') {
 		static $classes = array();
 		if (isset($classes[$class])) {
 			return $classes[$class];
