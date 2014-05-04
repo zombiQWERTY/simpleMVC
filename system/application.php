@@ -185,10 +185,11 @@ class Application extends Config{
 	 */
 	private function database() {
 		if ($this->db) { // Если включена работа с базой
-			require_once $this->root.'/system/ActiveRecord.php'; // Подключаем ActiveRecord.php (phpactiverecord.org)
+			require_once $this->root.SYSPATH.'/ActiveRecord.php'; // Подключаем ActiveRecord.php (phpactiverecord.org)
 			ActiveRecord\Config::initialize(function($cfg) {
+				require_once $this->root.APPPATH.'/config/dbConfig.php'; // Подключаем файл с соединениями
 				$cfg->set_model_directory($this->root.APPPATH.'/models/');
-				$cfg->set_connections(array('development' => 'mysql://'.$this->user.':'.$this->password.'@'.$this->host.'/'.$this->database.'?charset=utf8'));
+				$cfg->set_connections($connections);
 			});
 		}
 	}
