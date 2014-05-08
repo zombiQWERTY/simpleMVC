@@ -3,10 +3,11 @@ header('Content-Type: text/html; charset=utf-8');
 setlocale(LC_ALL, 'Russian_Russia.65001');
 
 define('BASE_URL', 'http://'.$_SERVER['HTTP_HOST']);
-define('APPPATH', '/application/');
-define('SYSPATH', '/system/');
+define('ROOT'    , $_SERVER['DOCUMENT_ROOT']);
+define('APPPATH' , ROOT.'/application/');
+define('SYSPATH' , ROOT.'/system/');
 
-require_once $_SERVER['DOCUMENT_ROOT'].APPPATH.'config/config.php';
-require_once $_SERVER['DOCUMENT_ROOT'].SYSPATH.'application.php';
-new Application;
+require_once SYSPATH.'autoload.php';
+
+new Application();
 ?>
