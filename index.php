@@ -9,5 +9,11 @@ define('SYSPATH' , ROOT.'/system/');
 
 require_once SYSPATH.'autoload.php';
 
+require_once SYSPATH.'exceptionHandler.php';
+
+set_error_handler('exceptionHandler');
+
+if (!Common::isPhp('5.3')) @set_magic_quotes_runtime(0);
+
 new Application();
 ?>

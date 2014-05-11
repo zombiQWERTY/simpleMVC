@@ -16,7 +16,7 @@ class SM {
 		if (file_exists($controller))
 			require_once $controller;
 		else
-			die('Тут вывод ошибки 404');
+			Error::show404();
 	}
 
 	public function loadView($name = '') {
@@ -24,8 +24,8 @@ class SM {
 		$layout = APPPATH.'mvc/views/layout/'.Config::$layout.'.layout.php';
 		$view   = APPPATH.'mvc/views/pages/'.$name.'.view.php';
 
-		if (!file_exists($layout)) die('Ошибка загрузки шаблона '.Config::$layout);
-		if (!file_exists($view))   die('Ошибка загрузки вида '.$name);
+		if (!file_exists($layout)) Error::showError('Ошибка загрузки шаблона '.Config::$layout);
+		if (!file_exists($view))   Error::showError('Ошибка загрузки вида '.$name);
 
 		ob_start();
 		if (SM::$data) {
@@ -53,7 +53,7 @@ class SM {
 					if (file_exists($file)) {
 						require_once $file;
 					} else {
-						die('Ошибка загрузки хелпера '.$helper);
+						Error::showError('Ошибка загрузки хелпера '.$helper);
 					}
 				}
 			} else {
@@ -61,11 +61,11 @@ class SM {
 				if (file_exists($file)) {
 					require_once $file;
 				} else {
-					die('Ошибка загрузки хелпера '.$name);
+					Error::showError('Ошибка загрузки хелпера '.$name);
 				}
 			}
 		} else {
-			die('Не указано название хелпера');
+			Error::showError('Не указано название хелпера');
 		}
 	}
 
@@ -80,10 +80,10 @@ class SM {
 			if (file_exists($file)) {
 				require_once $file;
 			} else {
-				die('Ошибка загрузки части шаблона '.$include);
+				Error::showError('Ошибка загрузки части шаблона '.$include);
 			}
 		} else {
-			die('Не указано название части шаблона');
+			Error::showError('Не указано название части шаблона');
 		}
 	}
 

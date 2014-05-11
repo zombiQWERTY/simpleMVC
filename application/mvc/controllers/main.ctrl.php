@@ -1,4 +1,4 @@
 <?
-SM::$data['title'] = 'Test';
+SM::$data['title'] = 'Главная';
 SM::loadView('main');
 ?>
