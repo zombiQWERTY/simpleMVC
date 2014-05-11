@@ -1,4 +1,27 @@
 <?
+/**
+ * SimpleMVC
+ *
+ * An open source application development framework for PHP 5.1.6 or newer
+ *
+ * @package		SimpleMVC
+ * @author		zombiQWERTY
+ * @copyright	Copyright (c) 2014, zombiQWERTY
+ * @link		http://zombiqwerty.ru/simplemvc/
+ * @since		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Exceptions Class
+ *
+ * @package		SimpleMVC
+ * @category	Exceptions
+ * @author		zombiQWERTY
+ * @link		http://zombiqwerty.ru/simplemvc/
+ */
+
 class Exceptions {
 
 	public $severity;
@@ -6,8 +29,20 @@ class Exceptions {
 	public $filename;
 	public $line;
 
+	/**
+	 * Nesting level of the output buffering mechanism
+	 *
+	 * @var int
+	 * @access public
+	 */
 	public static $obLevel;
 
+	/**
+	 * List if available error levels
+	 *
+	 * @var array
+	 * @access public
+	 */
 	public static $levels = array(
 		E_ERROR				=>	'Error',
 		E_WARNING			=>	'Warning',
@@ -24,10 +59,21 @@ class Exceptions {
 	);
 
 
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		Exceptions::$obLevel = ob_get_level();
 	}
 
+	// --------------------------------------------------------------------
+
+	/**
+	 * 404 Page Not Found Handler
+	 *
+	 * @access	public
+	 * @return	string
+	 */
 	public function show404() {
 		$heading = '404 Страница не найдена';
 		$message = 'Запрошенная страница не найдена.';
@@ -35,6 +81,22 @@ class Exceptions {
 		exit;
 	}
 
+	// --------------------------------------------------------------------
+
+	/**
+	 * General Error Page
+	 *
+	 * This function takes an error message as input
+	 * (either as a string or an array) and displays
+	 * it using the specified template.
+	 *
+	 * @access	public
+	 * @param	string	the heading
+	 * @param	string	the message
+	 * @param	string	the template name
+	 * @param 	int		the status code
+	 * @return	string
+	 */
 	public function showError($heading, $message, $template = 'errorGeneral', $statusCode = 500) {
 		Common::setStatusHeader($statusCode);
 
@@ -50,7 +112,19 @@ class Exceptions {
 		echo $buffer;
 	}
 
-	public static function showPhpError($severity, $message, $filepath, $line) {
+	// --------------------------------------------------------------------
+
+	/**
+	 * Native PHP error handler
+	 *
+	 * @access	public
+	 * @param	string	the error severity
+	 * @param	string	the error string
+	 * @param	string	the error filepath
+	 * @param	string	the error line number
+	 * @return	string
+	 */
+	public function showPhpError($severity, $message, $filepath, $line) {
 		$severity = (!isset(Exceptions::$levels[$severity])) ? ($severity) : (Exceptions::$levels[$severity]);
 
 		$filepath = str_replace("\\", "/", $filepath);

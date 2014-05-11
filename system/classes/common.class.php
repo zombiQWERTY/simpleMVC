@@ -1,17 +1,60 @@
 <?
+/**
+ * SimpleMVC
+ *
+ * An open source application development framework for PHP 5.1.6 or newer
+ *
+ * @package		SimpleMVC
+ * @author		zombiQWERTY
+ * @copyright	Copyright (c) 2014, zombiQWERTY
+ * @link		http://zombiqwerty.ru/simplemvc/
+ * @since		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Common Functions
+ *
+ * @package		SimpleMVC
+ * @category	Back-controller
+ * @author		zombiQWERTY
+ * @link		http://zombiqwerty.ru/simplemvc/
+ */
+
 class Common {
-	
+
+	/**
+	* Determines if the current version of PHP is greater then the supplied value
+	*
+	* Since there are a few places where we conditionally test for PHP > 5
+	* we'll set a static variable.
+	*
+	* @access	public
+	* @param	string
+	* @return	bool	TRUE if the current version is $version or higher
+	*/
 	public function isPhp($version = '5.0.0') {
-		static $_is_php;
+		static $php;
 		$version = (string)$version;
 		
-		if (!isset($_is_php[$version])) {
-			$_is_php[$version] = (version_compare(PHP_VERSION, $version) < 0) ? (FALSE) : (TRUE);
+		if (!isset($php[$version])) {
+			$php[$version] = (version_compare(PHP_VERSION, $version) < 0) ? (false) : (true);
 		}
 
-		return $_is_php[$version];
+		return $php[$version];
 	}
 
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Set HTTP Status Header
+	 *
+	 * @access	public
+	 * @param	int		the status code
+	 * @param	string
+	 * @return	void
+	 */
 	public function setStatusHeader($code = 200, $text = '') {
 		$stati = array(
 			200	=> 'OK',
