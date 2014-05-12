@@ -15,4 +15,4 @@ Open Source MVC приложение для разработки веб сайт
 	<li><a href="https://github.com/zombiQWERTY/simpleMVC/wiki/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D1%8B">Константы</a></li>
 	<li><a href="https://github.com/zombiQWERTY/simpleMVC/wiki/Active-Record">Active Record</a></li>
 	<li><a href="https://github.com/zombiQWERTY/simpleMVC/wiki/%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B8">Управление выводом ошибок</a></li>
-</ol>
+	<li><a href="https://github.com/zombiQWERTY/simpleMVC/wiki/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-URL">Работа с URL
