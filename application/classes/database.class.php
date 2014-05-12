@@ -26,8 +26,14 @@ class Database {
 	
 	/**
 	 * Constructor
+	 * Конструктор
 	 */
 	function __construct() {
+
+		/**
+		 * Variants of connections
+		 * Варианты соединений
+		 */
 		$connections = array(
 			'development' => 'mysql://'.Config::$user.':'.Config::$password.'@'.Config::$host.'/'.Config::$database.'?charset='.Config::$charset,
 			'production'  => 'mysql://'.Config::$user.':'.Config::$password.'@'.Config::$host.'/'.Config::$database.'?charset='.Config::$charset
@@ -36,6 +42,11 @@ class Database {
 		ActiveRecord\Config::initialize(function($cfg) use ($connections) {
 			$cfg->set_model_directory(APPPATH.'mvc/models/');
 			$cfg->set_connections($connections);
+
+			/**
+			 * Name of default connection
+			 * Имя соединения по-умолчанию
+			 */
 			$cfg->set_default_connection('development');
 		});
 	}

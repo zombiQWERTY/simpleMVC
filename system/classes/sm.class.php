@@ -32,14 +32,6 @@ class SM {
 	 */
 	public static $data;
 
-	/**
-	 * Array for actions with helpers
-	 *
-	 * @var array
-	 * @access public
-	 */
-	public static $helper;
-
 
 	/**
 	 * Constructor
@@ -133,21 +125,6 @@ class SM {
 		} else {
 			Error::showError('Не указано название хелпера');
 		}
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Load user library class
-	 *
-	 * @access	public
-	 * @param	string
-	 * @param	string
-	 * @return	class
-	 */
-	public function loadLibrary($class, $params = '') {
-		$class = new $class($params);
-		return $class;
 	}
 
 	// ------------------------------------------------------------------------
