@@ -124,7 +124,7 @@ class Exceptions {
 	 * @param	string	the error line number
 	 * @return	string
 	 */
-	public function showPhpError($severity, $message, $filepath, $line) {
+	public static function showPhpError($severity, $message, $filepath, $line) {
 		$severity = (!isset(Exceptions::$levels[$severity])) ? ($severity) : (Exceptions::$levels[$severity]);
 
 		$filepath = str_replace("\\", "/", $filepath);

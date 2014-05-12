@@ -51,7 +51,7 @@ class SM {
 	 * @return	controller
 	 */
 	public function setController() {
-		$segment    = (!Router::getUriSegment(1)) ? (Config::$indexPage) : (Router::getUriSegment(1));
+		$segment    = (!Router::getUriSegment(0)) ? (Config::$indexPage) : (Router::getUriSegment(0));
 		$controller = APPPATH.'mvc/controllers/'.$segment.'.ctrl.php';
 		if (file_exists($controller))
 			require_once $controller;

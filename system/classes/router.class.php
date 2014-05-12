@@ -31,7 +31,13 @@ class Router {
 	 * @return	array
 	 */
 	public static function getUriSegments() {
-		return explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+		$segments = explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+		if ($segments) {
+			array_shift($segments);
+			return $segments;
+		} else {
+			return false;
+		}
 	}
 
 	// ------------------------------------------------------------------------
@@ -44,9 +50,11 @@ class Router {
 	 * @return	string
 	 */
 	public static function getUriSegment($num = 0) {
-		if ($num > 0) {
-			$segments = self::getUriSegments();
-			return (count($segments) && count($segments) >= ($num - 1)) ? ($segments[$num]) : ('');
+		$segments = Router::getUriSegments();
+		if (count($segments)) {
+			return $segments[$num];
+		} else {
+			return null;
 		}
 	}
 	
