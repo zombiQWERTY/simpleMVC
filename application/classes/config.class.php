@@ -65,7 +65,7 @@ class Config {
 	 * Set the database for work with db
 	 * Устанавливает таблицу для работы с базой данных
 	 */
-	public static $database  = 'simpleMVC';
+	public static $database  = 'zombiqwerty';
 
 	/**
 	 * Set the db connect charset
